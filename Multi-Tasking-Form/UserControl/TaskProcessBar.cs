@@ -2,26 +2,21 @@
 {
     public partial class TaskProcessBar : UserControl
     {
-        readonly string TaskThreadIDLabel = "Task {0} -- Thread {1}";
-        int TaskID;
+        readonly string TaskThreadIDLabel = "Task {0} - Thread {1}";
+        readonly int TaskID;
         public TaskProcessBar()
         { InitializeComponent(); }
-        public TaskProcessBar(int taskId)
+        public TaskProcessBar(int taskId, int ThreadID)
         {
             InitializeComponent();
             TaskID = taskId;
-            TaskIdLabel.Text = string.Format(TaskThreadIDLabel, TaskID, Environment.CurrentManagedThreadId);
+            TaskIdLabel.Text = string.Format(TaskThreadIDLabel, TaskID, ThreadID);
         }
-        public int Value
+        public void Update(int ProcessPerCent, int ThreadID)
         {
-            get
-            { return TaskProgessBar.Value; }
-            set
-            {
-                TaskProgessBar.Visible = true;
-                TaskProgessBar.Value = value;
-                TaskIdLabel.Text = string.Format(TaskThreadIDLabel, TaskID, Environment.CurrentManagedThreadId);
-            }
+            TaskProgessBar.Visible = true;
+            TaskProgessBar.Value = ProcessPerCent;
+            TaskIdLabel.Text = string.Format(TaskThreadIDLabel, TaskID, ThreadID);
         }
     }
 }

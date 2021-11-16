@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium-w-Tinsoft", "Selenium-w-Tinsoft\Selenium-w-Tinsoft.csproj", "{8C5C02C1-4B78-40D8-9EF6-1A44406C2673}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Selenium-w-Tinsoft", "Selenium-w-Tinsoft\Selenium-w-Tinsoft.csproj", "{8C5C02C1-4B78-40D8-9EF6-1A44406C2673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multi-Tasking", "Multi-Tasking\Multi-Tasking.csproj", "{99AA1DCA-AF0D-4FA5-9FC5-8B8D7C8E2D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multi-Tasking", "Multi-Tasking\Multi-Tasking.csproj", "{99AA1DCA-AF0D-4FA5-9FC5-8B8D7C8E2D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multi-Tasking-Form", "Multi-Tasking-Form\Multi-Tasking-Form.csproj", "{7D359B4E-7119-4318-8BF8-E633C13DA6B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multi-Tasking-Form", "Multi-Tasking-Form\Multi-Tasking-Form.csproj", "{7D359B4E-7119-4318-8BF8-E633C13DA6B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSql", "PostgreSql\PostgreSql.csproj", "{BFCB63A9-D6D3-46E6-9DFF-DD4CCA238B29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7D359B4E-7119-4318-8BF8-E633C13DA6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D359B4E-7119-4318-8BF8-E633C13DA6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D359B4E-7119-4318-8BF8-E633C13DA6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCB63A9-D6D3-46E6-9DFF-DD4CCA238B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCB63A9-D6D3-46E6-9DFF-DD4CCA238B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCB63A9-D6D3-46E6-9DFF-DD4CCA238B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCB63A9-D6D3-46E6-9DFF-DD4CCA238B29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 
 namespace Selenium_w_Tinsoft.Modules
 {
-    internal class TinsoftProxy
+    public class TinsoftProxy
     {
         /// <summary>
         /// Đối tượng chứa các thuộc tính từ kết quả của Tinsoft
@@ -14,10 +14,9 @@ namespace Selenium_w_Tinsoft.Modules
             public string? description { get; set; }
         }
         /// <summary>
-        /// Check 1 key duy nhất, dùng cho các mục đích khác
+        /// Kiểm tra 1 key duy nhất, dùng cho các mục đích khác
         /// </summary>
         /// <param name="apiKey">Api key Tinsoft</param>
-        /// <returns></returns>
         internal static string? GetOneTinsoftProxy(string apiKey)
         {
 
@@ -47,7 +46,6 @@ namespace Selenium_w_Tinsoft.Modules
         /// Nhập vào mảng chứa các API Key sau đó lấy Proxy từ đó rồi trả về mảng
         /// </summary>
         /// <param name="apiKeys">Mảng string[] chứa các ApiKey cần lấy Proxy</param>
-        /// <returns></returns>
         internal static string[]? GetMultipleProxyTinSoft(string[] apiKeys)
         {
             if (apiKeys.Length > 0)

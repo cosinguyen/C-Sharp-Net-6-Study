@@ -1,6 +1,6 @@
 ﻿namespace Multi_Tasking_Form.Modules
 {
-    internal class TaskTogether : TaskScheduler
+    public class TaskTogether : TaskScheduler
     {
         [ThreadStatic]
         private static bool IsThreadBusy;
@@ -13,7 +13,11 @@
 
         private int TaskWaitting = 0;
 
-        internal TaskTogether(int MaxTaskInATime)
+        /// <summary>
+        /// Khởi tạo lớp TaskTogether và gán mặc định số Task chạy đồng thời
+        /// </summary>
+        /// <param name="MaxTaskInATime">Số Task sẽ chạy đồng thời</param>
+        public TaskTogether(int MaxTaskInATime)
         {
             //Khai báo kèm số lượng Task khi khởi tạo
             //Kiểm tra số lượng Task đăng ký, có thể giới hạn tại đây nếu muốn
@@ -21,15 +25,20 @@
             this.MaxTaskInATime = MaxTaskInATime;
         }
 
-        internal TaskTogether()
+        /// <summary>
+        /// Khởi tạo lớp TaskTogether và không gán số Task chạy đồng thời, mặc định là 1
+        /// </summary>
+        public TaskTogether()
         {
             //Khai báo khi khởi tạo không kèm số lượng Task, sẽ cập nhật sau
             //Mặc định là 1 
             MaxTaskInATime = 1;
         }
 
-
-        internal int MaximumTaskCount
+        /// <summary>
+        /// Phương thức để lấy hoặc gán số Task chạy đồng thời, thay đôi theo thời gian. Nếu giảm có thể sẽ gây lỗi
+        /// </summary>
+        public int MaximumTaskCount
         {
             //Phương thức dùng để lấy số Task tối đa chạy
             get
@@ -45,12 +54,16 @@
             }
         }
 
-        //Trả về số lượng Task đang chạy
-        internal int RunningTaskCount
+        /// <summary>
+        /// Trả về số Task đang chạy
+        /// </summary>
+        public int RunningTaskCount
         { get { return TaskQueuedOrRunning; } }
 
-        //Trả về số lượng Task đang đợi chạy
-        internal int WaitingTaskCount
+        /// <summary>
+        /// Trả về số Task đang đợi lượt chạy
+        /// </summary>
+        public int WaitingTaskCount
         { get { return TaskWaitting; } }
 
         protected sealed override void QueueTask(Task task)

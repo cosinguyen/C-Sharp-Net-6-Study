@@ -8,8 +8,9 @@ namespace Multi_Tasking_Form
         readonly string PendingTask = "Số Task đang chờ đợi: {0}";
         readonly string RunningTask = "Số Task đang chạy: {0}";
         readonly string FreeTask = "Số luồng còn trống: {0}";
+        static readonly TaskTogether TaskQueue = new();
+        readonly TaskFactory Factory = new(TaskQueue);
         int TaskProcess = 1;
-        readonly TaskTogether TaskQueue = new();
         public MainForm()
         {
             InitializeComponent();
@@ -47,19 +48,27 @@ namespace Multi_Tasking_Form
         //Sự kiện mỗi khi click vào nút thêm việc
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            var processbar = new TaskProcessBar(TaskProcess++);
+            var processbar = new TaskProcessBar(TaskProcess++, Environment.CurrentManagedThreadId);
             ProgressPanel.SuspendLayout();
             ProgressPanel.Controls.Add(processbar);
             processbar.Dock = DockStyle.Top;
             ProgressPanel.ResumeLayout(true);
 
-            new TaskFactory(TaskQueue).StartNew(async () =>
+            Factory.StartNew(() =>
             {
-                for (var i = 0; i < 25; i++)
+                for (var i = 0; i < 50; i++)
                 {
-                    BeginInvoke(new Action(() => { processbar.Value = i * 4; }));
-                    await Task.Delay(TimeSpan.FromSeconds(1));
+                    var threadID = Environment.CurrentManagedThreadId;
+                    try
+                    { BeginInvoke(new Action(() => { processbar.Update(i * 2, threadID); })); }
+                    finally
+                    { Thread.Sleep(100); }
                 }
+                var threadIDs = Environment.CurrentManagedThreadId;
+                try
+                { BeginInvoke(new Action(() => { processbar.Update(100, threadIDs); })); }
+                finally
+                { }
             });
         }
     }
