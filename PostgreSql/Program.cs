@@ -16,7 +16,6 @@ Console.ReadKey();
 
 void TestDatabaseAsync()
 {
-
     //Khởi tạo đối tượng DbContext chứa kết nối đến PostgreSQL
     PostgreSQLContext Database = new(ToPostgresConnectionString());
 
