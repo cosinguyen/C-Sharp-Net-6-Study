@@ -38,7 +38,7 @@ void TestDatabaseAsync()
             GuildModel? data;
             if (DbContext.Guilds != null)
             {
-                data = await DbContext.Guilds.Where(x => x.GuildID == (398887563366105099 + i)).FirstOrDefaultAsync();
+                data = await DbContext.Guilds.Where(x => x.GuildID == (398887563366105099 + i)).FirstOrDefaultAsync().ConfigureAwait(false);
                 if (data == null)
                 {
                     //Thêm vào như thêm đối tượng vào mảng
@@ -53,7 +53,7 @@ void TestDatabaseAsync()
         }
 
         //Lưu xuống Database
-        await DbContext.SaveChangesAsync();
+        await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
         //Thông báo Task 1 hoàn tất việc Save
         Console.WriteLine("Task 1 Save Complete on ThreadID" + Environment.CurrentManagedThreadId);
@@ -69,7 +69,7 @@ void TestDatabaseAsync()
             GuildModel? data;
             if (DbContext.Guilds != null)
             {
-                data = await DbContext.Guilds.Where(x => x.GuildID == (398887563366105099 + i)).FirstOrDefaultAsync();
+                data = await DbContext.Guilds.Where(x => x.GuildID == (398887563366105099 + i)).FirstOrDefaultAsync().ConfigureAwait(false);
                 if (data == null)
                 {
                     //Thêm vào như thêm đối tượng vào mảng
@@ -84,7 +84,7 @@ void TestDatabaseAsync()
         }
 
         //Lưu xuống Database
-        await DbContext.SaveChangesAsync();
+        await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
         //Thông báo Task 1 hoàn tất việc Save
         Console.WriteLine("Task 2 Save Complete on ThreadID" + Environment.CurrentManagedThreadId);

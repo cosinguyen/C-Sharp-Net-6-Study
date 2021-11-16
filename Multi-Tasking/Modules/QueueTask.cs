@@ -32,7 +32,7 @@
             TaskCompletionSource<object> tcs = new();
             Task.Run(async () =>
             {
-                await semaphore.WaitAsync(_cts.Token);
+                await semaphore.WaitAsync(_cts.Token).ConfigureAwait(false);
                 try
                 {
                     await lambda().ConfigureAwait(false);
@@ -58,7 +58,7 @@
         public async Task RunAsync(Func<Task> lambda, CancellationToken cancellationToken = default)
         {
             using var _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, cts.Token);
-            await semaphore.WaitAsync(_cts.Token);
+            await semaphore.WaitAsync(_cts.Token).ConfigureAwait(false);
             try
             { await lambda().ConfigureAwait(false); }
             finally

@@ -21,7 +21,7 @@ namespace Multi_Tasking.Modules
         private async Task ProcessQueueAsync()
         {
             foreach (var item in queue.GetConsumingEnumerable())
-                await item();
+                await item().ConfigureAwait(false);
         }
 
         /// <summary>
