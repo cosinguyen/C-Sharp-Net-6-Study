@@ -4,9 +4,9 @@ Console.WriteLine("Multi-Tasking Test. Press anykey !!!");
 Console.ReadKey();
 
 //Chạy thử Đa luồng nhiệm vụ đơn
-//OneTask();
-//Console.WriteLine("Single task on Multi-Tasking test completed");
-//Console.ReadKey();
+OneTask();
+Console.WriteLine("Single task on Multi-Tasking test completed");
+Console.ReadKey();
 
 
 //Chạy thử Đa luồng nhiều nhiệm vụ cùng lúc

@@ -4,10 +4,10 @@ namespace Multi_Tasking_Form
 {
     public partial class MainForm : Form
     {
-        readonly string? CurrentRunning;
-        readonly string? PendingTask;
-        readonly string? RunningTask;
-        readonly string? FreeTask;
+        readonly string CurrentRunning = "Số luồng đang chạy: {0}";
+        readonly string PendingTask = "Số Task đang chờ đợi: {0}";
+        readonly string RunningTask = "Số Task đang chạy: {0}";
+        readonly string FreeTask = "Số luồng còn trống: {0}";
         int TaskProcess = 1;
         readonly TaskTogether TaskQueue = new();
         public MainForm()
@@ -15,10 +15,10 @@ namespace Multi_Tasking_Form
             InitializeComponent();
 
             //Gán các Text trên Form xuống các biến để xử lý
-            CurrentRunning = lblCurrentRunning.Text;
-            PendingTask = lblPendingTask.Text;
-            RunningTask = lblRunningTask.Text;
-            FreeTask = lblFreeTask.Text;
+            lblFreeTask.Text = string.Format(FreeTask, 0);
+            lblCurrentRunning.Text = string.Format(CurrentRunning, 0);
+            lblPendingTask.Text = string.Format(PendingTask, 0);
+            lblRunningTask.Text = string.Format(RunningTask, 0);
 
             //Báo số Task tối đa có thể chạy đồng thời
             TaskQueue.MaximumTaskCount = (int)numMaxTask.Value;
@@ -34,10 +34,10 @@ namespace Multi_Tasking_Form
             numMaxTask.Value = TaskQueue.MaximumTaskCount;
 
             //Sẽ cập nhật các label mỗi Tick
-            lblFreeTask.Text = string.Format(FreeTask ?? "", TaskQueue.MaximumTaskCount - TaskQueue.RunningTaskCount);
-            lblCurrentRunning.Text = string.Format(CurrentRunning ?? "", TaskQueue.RunningTaskCount);
-            lblPendingTask.Text = string.Format(PendingTask ?? "", TaskQueue.WaitingTaskCount);
-            lblRunningTask.Text = string.Format(RunningTask ?? "", TaskQueue.RunningTaskCount);
+            lblFreeTask.Text = string.Format(FreeTask, TaskQueue.MaximumTaskCount - TaskQueue.RunningTaskCount);
+            lblCurrentRunning.Text = string.Format(CurrentRunning, TaskQueue.RunningTaskCount);
+            lblPendingTask.Text = string.Format(PendingTask, TaskQueue.WaitingTaskCount);
+            lblRunningTask.Text = string.Format(RunningTask, TaskQueue.RunningTaskCount);
         }
 
         //Mỗi khi click tăng số thì cập nhật vào đối tượng TaskQueue
@@ -52,15 +52,14 @@ namespace Multi_Tasking_Form
             ProgressPanel.Controls.Add(processbar);
             processbar.Dock = DockStyle.Top;
             ProgressPanel.ResumeLayout(true);
-            new TaskFactory(TaskQueue).StartNew(() =>
+
+            new TaskFactory(TaskQueue).StartNew(async () =>
             {
-                for (var i = 0; i < 50; ++i)
+                for (var i = 0; i < 25; i++)
                 {
-                    Thread.Sleep(100);
-                    BeginInvoke(new Action(() =>
-                    { processbar.Value = i * 2; }));
+                    BeginInvoke(new Action(() => { processbar.Value = i * 4; }));
+                    await Task.Delay(TimeSpan.FromSeconds(1));
                 }
-                BeginInvoke(new Action(() => { processbar.Value = 100; }));
             });
         }
     }
