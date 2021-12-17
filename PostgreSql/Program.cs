@@ -8,13 +8,13 @@ Console.WriteLine("ProgreSQL Testing App. Press anykey !!!");
 Console.ReadKey();
 
 try
-{ TestDatabaseAsync(); }
+{ TestDatabase(); }
 catch (Exception ex)
 { Console.WriteLine($"Message: {ex.Message}\nInner: {ex.InnerException}"); }
 
 Console.ReadKey();
 
-void TestDatabaseAsync()
+void TestDatabase()
 {
     //Khởi tạo đối tượng DbContext chứa kết nối đến PostgreSQL
     PostgreSQLContext Database = new(ToPostgresConnectionString());
@@ -25,7 +25,7 @@ void TestDatabaseAsync()
     //Đảm bảo rằng Database được tạo ra tương tự như đã thiết lập thông qua Fluent API
     Database.Database.EnsureCreatedAsync();
 
-    //Nếu có 2 Task cùng ghi dữ liệu như nhau xuống PostgreSQL thì Unique sẽ nhảy lỗi nên cần sử dụng Queue chạy
+    //Nếu có 2 Task cùng ghi dữ liệu như nhau xuống PostgreSQL thì Unique sẽ nhảy lỗi nên cần sử dụng Queue chạy, không cần thiết lắm
     BasicQueueTask queue = new();
 
     //Thêm 100 Guild vào bảng Guilds - Lần 1 (Task 1)
