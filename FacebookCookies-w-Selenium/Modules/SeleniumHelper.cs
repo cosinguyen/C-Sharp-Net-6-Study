@@ -18,7 +18,7 @@ namespace FacebookCookies_w_Selenium.Modules
         /// <summary>
         /// Biến ChromeDriver
         /// </summary>
-        private ChromeDriver driver;
+        private readonly IWebDriver driver;
         /// <summary>
         /// Biến Random dùng để Random các UserAgent
         /// </summary>
@@ -71,7 +71,10 @@ namespace FacebookCookies_w_Selenium.Modules
         private ChromeOptions GetChromeOption(bool _ua, string? _proxy = null)
         {
             ChromeOptions options = new();
+            options.AddArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-setuid-sandbox");
             options.AddArguments("--mute-audio", "--blink-settings=imagesEnabled=false", "--disable-notifications", "--ignore-certificate-errors", "--disable-gpu");
+            options.AddArgument("--user-data-dir=" + Path.GetTempPath() + "xProfile");
+            options.AddArgument("--profile-directory=" + "TestCookies");
             options.AddExcludedArgument("enable-automation");
             if (_ua)
             {
@@ -85,11 +88,13 @@ namespace FacebookCookies_w_Selenium.Modules
             }
             return options;
         }
+
         private string GetUA()
         {
             int uaIndex = random.Next(0, ua.Length);
             return ua[uaIndex].ToString();
         }
+
         private ChromeDriverService GetChromeService()
         {
             ChromeDriverService driverService = ChromeDriverService.CreateDefaultService();
@@ -104,6 +109,7 @@ namespace FacebookCookies_w_Selenium.Modules
             this.driver?.Quit();
             this.driver?.Dispose();
         }
+
         /// <summary>
         /// Import Facebook Cookies vào Chrome
         /// </summary>

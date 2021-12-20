@@ -9,11 +9,10 @@ namespace FacebookCookies_w_Selenium
         public MainForm()
         { InitializeComponent(); }
         protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            this.sele?.Dispose();
-        }
+        { this.sele?.Dispose(); }
         private void btnOpenChrome_Click(object sender, EventArgs e)
         {
+            this.sele?.Dispose();
             this.sele = new(true);
         }
 
