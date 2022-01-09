@@ -59,9 +59,9 @@
   </resheader>
   <data name="rtbRawStrings.Text" xml:space="preserve">
     <value>Thử nghiệm giải mã và mã hóa nội dung
-
-**Vui lòng điền mật khẩu trước khi mã hóa/giải mã, xuất/nhập file.
-**Lưu ý rằng xuất file không dùng dữ liệu đã mã hóa để ghi xuống file mà nó sẽ dùng Nội dung muốn mã hóa và mã hóa khi ghi vào file
-**Nhớ rằng ghi mật khẩu giải mã trước khi giải mã hoặc nhập file để tránh không giải mã được</value>
+*Vui lòng điền mật khẩu trước khi mã hóa/giải mã, xuất/nhập file (Mật khẩu)
+**Vui lòng tạo Key trước khi mã hóa/xuất file và đừng xóa PrivateKey dùng để giải mã (RSA)
+***Nhớ rằng ghi mật khẩu/Private Key trước khi giải mã/nhập file để tránh không giải mã được
+****Đối với RSA có thể tạo Key bằng các công cụ khác và điền PublicKey và PrivateKey vào để sử dụng</value>
   </data>
 </root>

@@ -43,8 +43,23 @@
             this.btnDecrypt = new System.Windows.Forms.Button();
             this.txtDecryptPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRSAEncrypt = new System.Windows.Forms.Button();
+            this.btnRSAFileEncrypt = new System.Windows.Forms.Button();
+            this.rtbRSAEncrypt = new System.Windows.Forms.RichTextBox();
+            this.btnCreateRSAKey = new System.Windows.Forms.Button();
+            this.txtPublicKey = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnRSAFileDecrypt = new System.Windows.Forms.Button();
+            this.rtbRSADecrypt = new System.Windows.Forms.RichTextBox();
+            this.btnRSADecrypt = new System.Windows.Forms.Button();
+            this.txtPrivateKey = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbRawStrings
@@ -89,10 +104,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 125);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 417);
+            this.groupBox1.Size = new System.Drawing.Size(376, 324);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Mã hóa";
+            this.groupBox1.Text = "Mã hóa cùng Mật Khẩu";
             // 
             // btnFileEncrypt
             // 
@@ -109,7 +124,7 @@
             this.rtbEncrypt.Location = new System.Drawing.Point(12, 80);
             this.rtbEncrypt.Name = "rtbEncrypt";
             this.rtbEncrypt.ReadOnly = true;
-            this.rtbEncrypt.Size = new System.Drawing.Size(358, 331);
+            this.rtbEncrypt.Size = new System.Drawing.Size(358, 225);
             this.rtbEncrypt.TabIndex = 5;
             this.rtbEncrypt.Text = "";
             // 
@@ -132,10 +147,10 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(394, 125);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 417);
+            this.groupBox2.Size = new System.Drawing.Size(376, 324);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Giải mã";
+            this.groupBox2.Text = "Giải mã cùng Mật khẩu";
             // 
             // btnFileDecrypt
             // 
@@ -152,7 +167,7 @@
             this.rtbDecrypt.Location = new System.Drawing.Point(12, 80);
             this.rtbDecrypt.Name = "rtbDecrypt";
             this.rtbDecrypt.ReadOnly = true;
-            this.rtbDecrypt.Size = new System.Drawing.Size(358, 331);
+            this.rtbDecrypt.Size = new System.Drawing.Size(358, 225);
             this.rtbDecrypt.TabIndex = 5;
             this.rtbDecrypt.Text = "";
             // 
@@ -182,11 +197,142 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Mật khẩu";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnRSAEncrypt);
+            this.groupBox3.Controls.Add(this.btnRSAFileEncrypt);
+            this.groupBox3.Controls.Add(this.rtbRSAEncrypt);
+            this.groupBox3.Controls.Add(this.btnCreateRSAKey);
+            this.groupBox3.Controls.Add(this.txtPublicKey);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 455);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(376, 324);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Mã hóa RSA";
+            // 
+            // btnRSAEncrypt
+            // 
+            this.btnRSAEncrypt.Location = new System.Drawing.Point(93, 51);
+            this.btnRSAEncrypt.Name = "btnRSAEncrypt";
+            this.btnRSAEncrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnRSAEncrypt.TabIndex = 7;
+            this.btnRSAEncrypt.Text = "Mã hóa";
+            this.btnRSAEncrypt.UseVisualStyleBackColor = true;
+            this.btnRSAEncrypt.Click += new System.EventHandler(this.RSAEncrypt_Click);
+            // 
+            // btnRSAFileEncrypt
+            // 
+            this.btnRSAFileEncrypt.Location = new System.Drawing.Point(295, 51);
+            this.btnRSAFileEncrypt.Name = "btnRSAFileEncrypt";
+            this.btnRSAFileEncrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnRSAFileEncrypt.TabIndex = 6;
+            this.btnRSAFileEncrypt.Text = "Xuất file";
+            this.btnRSAFileEncrypt.UseVisualStyleBackColor = true;
+            this.btnRSAFileEncrypt.Click += new System.EventHandler(this.RSAFileEncrypt_Click);
+            // 
+            // rtbRSAEncrypt
+            // 
+            this.rtbRSAEncrypt.Location = new System.Drawing.Point(12, 80);
+            this.rtbRSAEncrypt.Name = "rtbRSAEncrypt";
+            this.rtbRSAEncrypt.ReadOnly = true;
+            this.rtbRSAEncrypt.Size = new System.Drawing.Size(358, 225);
+            this.rtbRSAEncrypt.TabIndex = 5;
+            this.rtbRSAEncrypt.Text = "";
+            // 
+            // btnCreateRSAKey
+            // 
+            this.btnCreateRSAKey.Location = new System.Drawing.Point(12, 51);
+            this.btnCreateRSAKey.Name = "btnCreateRSAKey";
+            this.btnCreateRSAKey.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateRSAKey.TabIndex = 4;
+            this.btnCreateRSAKey.Text = "Tạo Key";
+            this.btnCreateRSAKey.UseVisualStyleBackColor = true;
+            this.btnCreateRSAKey.Click += new System.EventHandler(this.CreateRSAKey_Click);
+            // 
+            // txtPublicKey
+            // 
+            this.txtPublicKey.Location = new System.Drawing.Point(75, 22);
+            this.txtPublicKey.Name = "txtPublicKey";
+            this.txtPublicKey.Size = new System.Drawing.Size(295, 23);
+            this.txtPublicKey.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Public Key";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnRSAFileDecrypt);
+            this.groupBox4.Controls.Add(this.rtbRSADecrypt);
+            this.groupBox4.Controls.Add(this.btnRSADecrypt);
+            this.groupBox4.Controls.Add(this.txtPrivateKey);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Location = new System.Drawing.Point(394, 455);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(376, 324);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Giải mã RSA";
+            // 
+            // btnRSAFileDecrypt
+            // 
+            this.btnRSAFileDecrypt.Location = new System.Drawing.Point(295, 51);
+            this.btnRSAFileDecrypt.Name = "btnRSAFileDecrypt";
+            this.btnRSAFileDecrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnRSAFileDecrypt.TabIndex = 6;
+            this.btnRSAFileDecrypt.Text = "Nhập file";
+            this.btnRSAFileDecrypt.UseVisualStyleBackColor = true;
+            this.btnRSAFileDecrypt.Click += new System.EventHandler(this.RSAFileDecrypt_Click);
+            // 
+            // rtbRSADecrypt
+            // 
+            this.rtbRSADecrypt.Location = new System.Drawing.Point(12, 80);
+            this.rtbRSADecrypt.Name = "rtbRSADecrypt";
+            this.rtbRSADecrypt.ReadOnly = true;
+            this.rtbRSADecrypt.Size = new System.Drawing.Size(358, 225);
+            this.rtbRSADecrypt.TabIndex = 5;
+            this.rtbRSADecrypt.Text = "";
+            // 
+            // btnRSADecrypt
+            // 
+            this.btnRSADecrypt.Location = new System.Drawing.Point(12, 51);
+            this.btnRSADecrypt.Name = "btnRSADecrypt";
+            this.btnRSADecrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnRSADecrypt.TabIndex = 4;
+            this.btnRSADecrypt.Text = "Giải mã";
+            this.btnRSADecrypt.UseVisualStyleBackColor = true;
+            this.btnRSADecrypt.Click += new System.EventHandler(this.RSADecrypt_Click);
+            // 
+            // txtPrivateKey
+            // 
+            this.txtPrivateKey.Location = new System.Drawing.Point(75, 22);
+            this.txtPrivateKey.Name = "txtPrivateKey";
+            this.txtPrivateKey.Size = new System.Drawing.Size(295, 23);
+            this.txtPrivateKey.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Private Key";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 554);
+            this.ClientSize = new System.Drawing.Size(782, 794);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -197,6 +343,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +368,18 @@
         private Button btnDecrypt;
         private TextBox txtDecryptPassword;
         private Label label3;
+        private GroupBox groupBox3;
+        private Button btnRSAFileEncrypt;
+        private RichTextBox rtbRSAEncrypt;
+        private Button btnCreateRSAKey;
+        private TextBox txtPublicKey;
+        private Label label4;
+        private GroupBox groupBox4;
+        private Button btnRSAFileDecrypt;
+        private RichTextBox rtbRSADecrypt;
+        private Button btnRSADecrypt;
+        private TextBox txtPrivateKey;
+        private Label label5;
+        private Button btnRSAEncrypt;
     }
 }
