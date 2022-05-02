@@ -6,7 +6,7 @@ namespace Encrypt_Decrypt
     {
         public MainForm()
         { InitializeComponent(); }
-        private void Encrypt_Click(object sender, EventArgs e)
+        private async void Encrypt_Click(object sender, EventArgs e)
         {
             var RawStrings = rtbRawStrings.Text;
             var EncryptPassword = txtEncryptPassword.Text;
@@ -14,12 +14,12 @@ namespace Encrypt_Decrypt
             if (!string.IsNullOrEmpty(RawStrings))
             {
                 var EncryptStrings = Encryption.EncryptAsync(EncryptPassword, RawStrings);
-                rtbEncrypt.Text = EncryptStrings.Result;
+                rtbEncrypt.Text = await EncryptStrings;
             }
             else
             { MessageBox.Show("Có dữ liệu đâu mà mã hóa"); }
         }
-        private void Decrypt_Click(object sender, EventArgs e)
+        private async void Decrypt_Click(object sender, EventArgs e)
         {
             var EncryptStrings = rtbEncrypt.Text;
             var DecryptPassword = txtDecryptPassword.Text;
@@ -27,13 +27,13 @@ namespace Encrypt_Decrypt
             if (!string.IsNullOrEmpty(EncryptStrings))
             {
                 var DecryptStrings = Encryption.DecryptAsync(DecryptPassword, EncryptStrings);
-                rtbDecrypt.Text = DecryptStrings.Result;
+                rtbDecrypt.Text = await DecryptStrings;
             }
             else
             { MessageBox.Show("Có dữ liệu đâu mà giải mã"); }
         }
 
-        private void FileEncrypt_Click(object sender, EventArgs e)
+        private async void FileEncrypt_Click(object sender, EventArgs e)
         {
             var RawStrings = rtbRawStrings.Text;
             var EncryptPassword = txtEncryptPassword.Text;
@@ -51,14 +51,14 @@ namespace Encrypt_Decrypt
 
                 if (FileName != null)
                 {
-                    Encryption.FileEncryptAsync(FileName, EncryptPassword, RawStrings).GetAwaiter();
+                    await Encryption.FileEncryptAsync(FileName, EncryptPassword, RawStrings);
                     MessageBox.Show("Hoàn tất mã hóa xuống file");
                 }
             }
             else
             { MessageBox.Show("Có dữ liệu đâu mà mã hóa"); }
         }
-        private void FileDecrypt_Click(object sender, EventArgs e)
+        private async void FileDecrypt_Click(object sender, EventArgs e)
         {
             var DecryptPassword = txtDecryptPassword.Text;
 
@@ -73,7 +73,7 @@ namespace Encrypt_Decrypt
 
             if (FileName != null)
             {
-                string DecryptStrings = Encryption.FileDecryptAsync(FileName, DecryptPassword).Result;
+                string DecryptStrings = await Encryption.FileDecryptAsync(FileName, DecryptPassword);
                 rtbDecrypt.Text = DecryptStrings;
                 MessageBox.Show("Hoàn tất đọc file mã hóa");
             }
@@ -86,7 +86,7 @@ namespace Encrypt_Decrypt
             txtPrivateKey.Text = priKey;
         }
 
-        private void RSAFileEncrypt_Click(object sender, EventArgs e)
+        private async void RSAFileEncrypt_Click(object sender, EventArgs e)
         {
             var RawStrings = rtbRawStrings.Text;
             var PublicKey = txtPublicKey.Text;
@@ -104,14 +104,14 @@ namespace Encrypt_Decrypt
 
                 if (FileName != null)
                 {
-                    Encryption.RSAFileEncryptAsync(FileName, PublicKey, RawStrings).GetAwaiter();
+                    await Encryption.RSAFileEncryptAsync(FileName, PublicKey, RawStrings);
                     MessageBox.Show("Hoàn tất mã hóa xuống file");
                 }
             }
             else
             { MessageBox.Show("Có dữ liệu hoặc PublicKey đâu mà mã hóa"); }
         }
-        private void RSAFileDecrypt_Click(object sender, EventArgs e)
+        private async void RSAFileDecrypt_Click(object sender, EventArgs e)
         {
             var PrivateKey = txtPrivateKey.Text;
 
@@ -128,7 +128,7 @@ namespace Encrypt_Decrypt
 
                 if (FileName != null)
                 {
-                    string DecryptStrings = Encryption.RSAFileDecryptAsync(FileName, PrivateKey).Result;
+                    string DecryptStrings = await Encryption.RSAFileDecryptAsync(FileName, PrivateKey);
                     rtbRSADecrypt.Text = DecryptStrings;
                     MessageBox.Show("Hoàn tất đọc file mã hóa");
                 }
@@ -137,7 +137,7 @@ namespace Encrypt_Decrypt
             { MessageBox.Show("Không có Private Key không thể giải mã"); }
         }
 
-        private void RSAEncrypt_Click(object sender, EventArgs e)
+        private async void RSAEncrypt_Click(object sender, EventArgs e)
         {
             var RawStrings = rtbRawStrings.Text;
             var PublicKey = txtPublicKey.Text;
@@ -145,12 +145,12 @@ namespace Encrypt_Decrypt
             if (!string.IsNullOrEmpty(RawStrings) && !string.IsNullOrEmpty(PublicKey))
             {
                 var EncryptStrings = Encryption.RSAEncryptAsync(PublicKey, RawStrings);
-                rtbRSAEncrypt.Text = EncryptStrings.Result;
+                rtbRSAEncrypt.Text = await EncryptStrings;
             }
             else
             { MessageBox.Show("Có dữ liệu hoặc PublicKey đâu mà mã hóa"); }
         }
-        private void RSADecrypt_Click(object sender, EventArgs e)
+        private async void RSADecrypt_Click(object sender, EventArgs e)
         {
             var EncryptStrings = rtbRSAEncrypt.Text;
             var PrivateKey = txtPrivateKey.Text;
@@ -158,7 +158,7 @@ namespace Encrypt_Decrypt
             if (!string.IsNullOrEmpty(PrivateKey))
             {
                 var DecryptStrings = Encryption.RSADecryptAsync(PrivateKey, EncryptStrings);
-                rtbRSADecrypt.Text = DecryptStrings.Result;
+                rtbRSADecrypt.Text = await DecryptStrings;
             }
             else
             { MessageBox.Show("Không có Private Key không thể giải mã"); }

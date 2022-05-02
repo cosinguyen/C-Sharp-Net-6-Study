@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.cbbNetwork = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCreateMainWallet = new System.Windows.Forms.Button();
+            this.txtMainSeedWords = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnCheckMainBalance = new System.Windows.Forms.Button();
             this.lblMainUSDT = new System.Windows.Forms.Label();
             this.lblMainBNB = new System.Windows.Forms.Label();
@@ -44,13 +47,9 @@
             this.txtMainAddress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbbNetwork
@@ -60,7 +59,7 @@
             this.cbbNetwork.Items.AddRange(new object[] {
             "MainNet",
             "TestNet"});
-            this.cbbNetwork.Location = new System.Drawing.Point(103, 77);
+            this.cbbNetwork.Location = new System.Drawing.Point(103, 106);
             this.cbbNetwork.Name = "cbbNetwork";
             this.cbbNetwork.Size = new System.Drawing.Size(121, 23);
             this.cbbNetwork.TabIndex = 3;
@@ -68,6 +67,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCreateMainWallet);
+            this.groupBox1.Controls.Add(this.txtMainSeedWords);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnCheckMainBalance);
             this.groupBox1.Controls.Add(this.lblMainUSDT);
             this.groupBox1.Controls.Add(this.lblMainBNB);
@@ -83,14 +85,40 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(698, 118);
+            this.groupBox1.Size = new System.Drawing.Size(744, 144);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ví chính";
             // 
+            // btnCreateMainWallet
+            // 
+            this.btnCreateMainWallet.Location = new System.Drawing.Point(484, 79);
+            this.btnCreateMainWallet.Name = "btnCreateMainWallet";
+            this.btnCreateMainWallet.Size = new System.Drawing.Size(121, 23);
+            this.btnCreateMainWallet.TabIndex = 12;
+            this.btnCreateMainWallet.Text = "Create Wallet";
+            this.btnCreateMainWallet.UseVisualStyleBackColor = true;
+            this.btnCreateMainWallet.Click += new System.EventHandler(this.CreateMainWallet_Click);
+            // 
+            // txtMainSeedWords
+            // 
+            this.txtMainSeedWords.Location = new System.Drawing.Point(91, 77);
+            this.txtMainSeedWords.Name = "txtMainSeedWords";
+            this.txtMainSeedWords.Size = new System.Drawing.Size(387, 23);
+            this.txtMainSeedWords.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Seed Words:";
+            // 
             // btnCheckMainBalance
             // 
-            this.btnCheckMainBalance.Location = new System.Drawing.Point(484, 77);
+            this.btnCheckMainBalance.Location = new System.Drawing.Point(484, 106);
             this.btnCheckMainBalance.Name = "btnCheckMainBalance";
             this.btnCheckMainBalance.Size = new System.Drawing.Size(121, 23);
             this.btnCheckMainBalance.TabIndex = 9;
@@ -138,7 +166,7 @@
             // 
             // btnLoadMainWallet
             // 
-            this.btnLoadMainWallet.Location = new System.Drawing.Point(230, 77);
+            this.btnLoadMainWallet.Location = new System.Drawing.Point(230, 106);
             this.btnLoadMainWallet.Name = "btnLoadMainWallet";
             this.btnLoadMainWallet.Size = new System.Drawing.Size(121, 23);
             this.btnLoadMainWallet.TabIndex = 7;
@@ -148,7 +176,7 @@
             // 
             // btnSaveMainWallet
             // 
-            this.btnSaveMainWallet.Location = new System.Drawing.Point(357, 77);
+            this.btnSaveMainWallet.Location = new System.Drawing.Point(357, 106);
             this.btnSaveMainWallet.Name = "btnSaveMainWallet";
             this.btnSaveMainWallet.Size = new System.Drawing.Size(121, 23);
             this.btnSaveMainWallet.TabIndex = 8;
@@ -159,7 +187,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 81);
+            this.label3.Location = new System.Drawing.Point(6, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 15);
             this.label3.TabIndex = 6;
@@ -200,38 +228,18 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tabControl1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 136);
+            this.groupBox2.Location = new System.Drawing.Point(12, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(795, 514);
+            this.groupBox2.Size = new System.Drawing.Size(744, 488);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tính năng";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(6, 22);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(783, 486);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(775, 458);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Giao dịch";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 662);
+            this.ClientSize = new System.Drawing.Size(767, 662);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -241,8 +249,6 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -264,7 +270,8 @@
         private Label lblMainBNB;
         private Button btnCheckMainBalance;
         private GroupBox groupBox2;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
+        private Button btnCreateMainWallet;
+        private TextBox txtMainSeedWords;
+        private Label label4;
     }
 }
