@@ -40,8 +40,8 @@
             this.btnSaveMainWallet = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMainPrivateKey = new System.Windows.Forms.TextBox();
+            this.txtMainAddress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -64,6 +64,7 @@
             this.cbbNetwork.Name = "cbbNetwork";
             this.cbbNetwork.Size = new System.Drawing.Size(121, 23);
             this.cbbNetwork.TabIndex = 3;
+            this.cbbNetwork.SelectedIndexChanged += new System.EventHandler(this.Network_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -77,12 +78,12 @@
             this.groupBox1.Controls.Add(this.cbbNetwork);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtMainPrivateKey);
+            this.groupBox1.Controls.Add(this.txtMainAddress);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(644, 118);
+            this.groupBox1.Size = new System.Drawing.Size(698, 118);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ví chính";
@@ -95,6 +96,7 @@
             this.btnCheckMainBalance.TabIndex = 9;
             this.btnCheckMainBalance.Text = "Check";
             this.btnCheckMainBalance.UseVisualStyleBackColor = true;
+            this.btnCheckMainBalance.Click += new System.EventHandler(this.CheckMainBalance_Click);
             // 
             // lblMainUSDT
             // 
@@ -142,6 +144,7 @@
             this.btnLoadMainWallet.TabIndex = 7;
             this.btnLoadMainWallet.Text = "Load";
             this.btnLoadMainWallet.UseVisualStyleBackColor = true;
+            this.btnLoadMainWallet.Click += new System.EventHandler(this.LoadMainWallet_Click);
             // 
             // btnSaveMainWallet
             // 
@@ -151,6 +154,7 @@
             this.btnSaveMainWallet.TabIndex = 8;
             this.btnSaveMainWallet.Text = "Save";
             this.btnSaveMainWallet.UseVisualStyleBackColor = true;
+            this.btnSaveMainWallet.Click += new System.EventHandler(this.SaveMainWallet_ClickAsync);
             // 
             // label3
             // 
@@ -170,19 +174,20 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Private Key:";
             // 
-            // textBox2
+            // txtMainPrivateKey
             // 
-            this.textBox2.Location = new System.Drawing.Point(91, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(387, 23);
-            this.textBox2.TabIndex = 2;
+            this.txtMainPrivateKey.Location = new System.Drawing.Point(91, 48);
+            this.txtMainPrivateKey.Name = "txtMainPrivateKey";
+            this.txtMainPrivateKey.PasswordChar = '*';
+            this.txtMainPrivateKey.Size = new System.Drawing.Size(387, 23);
+            this.txtMainPrivateKey.TabIndex = 2;
             // 
-            // textBox1
+            // txtMainAddress
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(387, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtMainAddress.Location = new System.Drawing.Point(91, 19);
+            this.txtMainAddress.Name = "txtMainAddress";
+            this.txtMainAddress.Size = new System.Drawing.Size(387, 23);
+            this.txtMainAddress.TabIndex = 1;
             // 
             // label1
             // 
@@ -248,8 +253,8 @@
         private ComboBox cbbNetwork;
         private Label label3;
         private Label label2;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtMainPrivateKey;
+        private TextBox txtMainAddress;
         private Label label1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
