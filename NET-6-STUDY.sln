@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacebookCookies-w-Selenium"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encrypt-Decrypt", "Encrypt-Decrypt\Encrypt-Decrypt.csproj", "{41F06B1D-1A67-49E0-BD9D-A6EC0721DBB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binance Smart Chain Wallet", "Binance Smart Chain Wallet\Binance Smart Chain Wallet.csproj", "{96009EAA-BB09-48B5-AA22-F207BA5FB716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binance Smart Chain Wallet", "Binance Smart Chain Wallet\Binance Smart Chain Wallet.csproj", "{96009EAA-BB09-48B5-AA22-F207BA5FB716}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
