@@ -67,7 +67,7 @@ namespace Binance_Smart_Chain_Wallet
             if (!string.IsNullOrWhiteSpace(mainAddress) && !string.IsNullOrWhiteSpace(mainPrivateKey))
             {
                 string? path = SaveDialog("Save Main Wallet");
-                var mainWallet = new { publickey = mainAddress, privatekey = mainPrivateKey, seedwords = mainSeedWords };
+                var mainWallet = new { address = mainAddress, privatekey = mainPrivateKey, seedwords = mainSeedWords };
                 string json = JsonConvert.SerializeObject(mainWallet);
                 if (path != null)
                 {
@@ -87,7 +87,7 @@ namespace Binance_Smart_Chain_Wallet
                 dynamic? results = JsonConvert.DeserializeObject<dynamic>(line);
                 if (results != null)
                 {
-                    txtMainAddress.Text = results.publickey;
+                    txtMainAddress.Text = results.address;
                     txtMainPrivateKey.Text = results.privatekey;
                     txtMainSeedWords.Text = results.seedwords;
                 }
