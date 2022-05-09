@@ -123,7 +123,6 @@
             // 
             this.rtbEncrypt.Location = new System.Drawing.Point(12, 80);
             this.rtbEncrypt.Name = "rtbEncrypt";
-            this.rtbEncrypt.ReadOnly = true;
             this.rtbEncrypt.Size = new System.Drawing.Size(358, 225);
             this.rtbEncrypt.TabIndex = 5;
             this.rtbEncrypt.Text = "";
@@ -166,7 +165,6 @@
             // 
             this.rtbDecrypt.Location = new System.Drawing.Point(12, 80);
             this.rtbDecrypt.Name = "rtbDecrypt";
-            this.rtbDecrypt.ReadOnly = true;
             this.rtbDecrypt.Size = new System.Drawing.Size(358, 225);
             this.rtbDecrypt.TabIndex = 5;
             this.rtbDecrypt.Text = "";
