@@ -53,7 +53,7 @@ namespace Selenium_w_Tinsoft
             #region STOP-CHECK-FAST
             //Chờ đợi 6s sẽ kiểm tra tiếp
             //Không thì Tinsoft sẽ khóa API nhé
-            this.Invoke(new Action(async () =>
+            Invoke(new Action(async () =>
             {
                 btnCheck.Enabled = false;
                 await Task.Delay(TimeSpan.FromSeconds(6));

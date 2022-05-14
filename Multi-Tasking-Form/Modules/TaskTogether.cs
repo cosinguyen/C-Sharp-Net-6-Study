@@ -42,7 +42,7 @@
         {
             //Phương thức dùng để lấy số Task tối đa chạy
             get
-            { return this.MaxTaskInATime; }
+            { return MaxTaskInATime; }
             set
             {
                 //Kiểm tra khi khi khởi tạo có số lượng Task đi kèm
@@ -50,7 +50,7 @@
                     throw new ArgumentOutOfRangeException();
 
                 //Vì có nhiều luồng có thể gán số này cùng lúc nên phải khóa lại cẩn thận
-                Interlocked.Exchange(ref this.MaxTaskInATime, value);
+                Interlocked.Exchange(ref MaxTaskInATime, value);
             }
         }
 

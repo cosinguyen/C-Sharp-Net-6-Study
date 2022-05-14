@@ -65,7 +65,7 @@ namespace FacebookCookies_w_Selenium.Modules
         {
             ChromeOptions driverOptions = GetChromeOption(_ua, _proxy);
             ChromeDriverService driverServices = GetChromeService();
-            this.driver = new ChromeDriver(driverServices, driverOptions);
+            driver = new ChromeDriver(driverServices, driverOptions);
         }
 
         private ChromeOptions GetChromeOption(bool _ua, string? _proxy = null)
@@ -106,8 +106,8 @@ namespace FacebookCookies_w_Selenium.Modules
         /// </summary>
         internal void Dispose()
         {
-            this.driver?.Quit();
-            this.driver?.Dispose();
+            driver?.Quit();
+            driver?.Dispose();
         }
 
         /// <summary>
@@ -116,54 +116,54 @@ namespace FacebookCookies_w_Selenium.Modules
         /// <param name="cookies">Đối tượng Facebook Cookies</param>
         internal void ImportFacebookCookie(string cookiesString)
         {
-            this.driver.Navigate().GoToUrl(@"https://m.facebook.com");
-            this.driver.Manage().Cookies.DeleteAllCookies();
-            this.driver.Navigate().Refresh();
+            driver.Navigate().GoToUrl(@"https://m.facebook.com");
+            driver.Manage().Cookies.DeleteAllCookies();
+            driver.Navigate().Refresh();
 
             FacebookCookies cookies = StringToFacebookCookies(cookiesString);
 
             if (cookies.c_user != null)
             {
                 Cookie c_user = new("c_user", cookies.c_user.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, false, "None");
-                this.driver.Manage().Cookies.AddCookie(c_user);
+                driver.Manage().Cookies.AddCookie(c_user);
             }
             if (cookies.fr != null)
             {
                 Cookie fr = new("fr", cookies.fr.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, true, "None");
-                this.driver.Manage().Cookies.AddCookie(fr);
+                driver.Manage().Cookies.AddCookie(fr);
             }
             if (cookies.xs != null)
             {
                 Cookie xs = new("xs", cookies.xs.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, true, "None");
-                this.driver.Manage().Cookies.AddCookie(xs);
+                driver.Manage().Cookies.AddCookie(xs);
             }
             if (cookies.datr != null)
             {
                 Cookie datr = new("datr", cookies.datr.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, true, "None");
-                this.driver.Manage().Cookies.AddCookie(datr);
+                driver.Manage().Cookies.AddCookie(datr);
             }
             if (cookies.wd != null)
             {
                 Cookie wd = new("wd", cookies.wd.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, false, "Lax");
-                this.driver.Manage().Cookies.AddCookie(wd);
+                driver.Manage().Cookies.AddCookie(wd);
             }
             if (cookies.spin != null)
             {
                 Cookie spin = new("spin", cookies.spin.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, true, "None");
-                this.driver.Manage().Cookies.AddCookie(spin);
+                driver.Manage().Cookies.AddCookie(spin);
             }
             if (cookies.locale != null)
             {
                 Cookie locale = new("locale", cookies.locale.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, false, "None");
-                this.driver.Manage().Cookies.AddCookie(locale);
+                driver.Manage().Cookies.AddCookie(locale);
             }
             if (cookies.sb != null)
             {
                 Cookie sb = new("sb", cookies.sb.ToString(), @".facebook.com", @"/", DateTime.Now.AddDays(5), true, true, "None");
-                this.driver.Manage().Cookies.AddCookie(sb);
+                driver.Manage().Cookies.AddCookie(sb);
             }
 
-            this.driver.Navigate().Refresh();
+            driver.Navigate().Refresh();
         }
 
         private FacebookCookies StringToFacebookCookies(string cookieString)
@@ -188,8 +188,8 @@ namespace FacebookCookies_w_Selenium.Modules
         /// </summary>
         internal FacebookCookies GetCookies()
         {
-            this.driver.Navigate().GoToUrl(@"https://m.facebook.com");
-            var cookie = this.driver.Manage().Cookies.AllCookies;
+            driver.Navigate().GoToUrl(@"https://m.facebook.com");
+            var cookie = driver.Manage().Cookies.AllCookies;
 
             FacebookCookies cookies = new();
             foreach (var item in cookie)
