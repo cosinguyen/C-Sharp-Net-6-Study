@@ -68,7 +68,7 @@ namespace Multi_Tasking_Form
                 try
                 { BeginInvoke(new Action(() => { processbar.Update(100, threadIDs); })); }
                 finally
-                { }
+                { Thread.Sleep(100); }
             });
         }
     }

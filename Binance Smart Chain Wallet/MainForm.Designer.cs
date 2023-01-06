@@ -138,7 +138,7 @@
             // 
             // btnRecovery
             // 
-            this.btnRecovery.Location = new System.Drawing.Point(309, 135);
+            this.btnRecovery.Location = new System.Drawing.Point(107, 135);
             this.btnRecovery.Name = "btnRecovery";
             this.btnRecovery.Size = new System.Drawing.Size(95, 23);
             this.btnRecovery.TabIndex = 11;
@@ -208,7 +208,7 @@
             // 
             // btnCheckMainBalance
             // 
-            this.btnCheckMainBalance.Location = new System.Drawing.Point(410, 135);
+            this.btnCheckMainBalance.Location = new System.Drawing.Point(208, 135);
             this.btnCheckMainBalance.Name = "btnCheckMainBalance";
             this.btnCheckMainBalance.Size = new System.Drawing.Size(95, 23);
             this.btnCheckMainBalance.TabIndex = 8;
@@ -238,7 +238,7 @@
             // 
             // btnLoadMainWallet
             // 
-            this.btnLoadMainWallet.Location = new System.Drawing.Point(107, 135);
+            this.btnLoadMainWallet.Location = new System.Drawing.Point(568, 114);
             this.btnLoadMainWallet.Name = "btnLoadMainWallet";
             this.btnLoadMainWallet.Size = new System.Drawing.Size(95, 23);
             this.btnLoadMainWallet.TabIndex = 6;
@@ -248,7 +248,7 @@
             // 
             // btnSaveMainWallet
             // 
-            this.btnSaveMainWallet.Location = new System.Drawing.Point(208, 135);
+            this.btnSaveMainWallet.Location = new System.Drawing.Point(568, 143);
             this.btnSaveMainWallet.Name = "btnSaveMainWallet";
             this.btnSaveMainWallet.Size = new System.Drawing.Size(95, 23);
             this.btnSaveMainWallet.TabIndex = 7;
@@ -261,9 +261,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 15);
+            this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 0;
-            this.label3.Text = "RPC (Web3) Url:";
+            this.label3.Text = "RPC Url:";
             // 
             // label2
             // 
@@ -278,7 +278,6 @@
             // 
             this.txtMainPrivateKey.Location = new System.Drawing.Point(103, 48);
             this.txtMainPrivateKey.Name = "txtMainPrivateKey";
-            this.txtMainPrivateKey.PasswordChar = '*';
             this.txtMainPrivateKey.Size = new System.Drawing.Size(375, 23);
             this.txtMainPrivateKey.TabIndex = 2;
             // 

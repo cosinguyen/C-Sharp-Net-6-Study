@@ -10,7 +10,7 @@ namespace Binance_Smart_Chain_Wallet.Modules
 {
     internal class Transaction
     {
-        internal static async Task<TransactionReceipt> SendAndWaitForReceiptAsync(TransactionDetail detail, BigInteger chainID, string network, CancellationTokenSource? cancellationTokenSource = default)
+        internal static async Task<TransactionReceipt> SendAndWaitForReceiptAsync(TransactionDetail detail, BigInteger chainID, string network, CancellationTokenSource cancellationTokenSource)
         {
             Account account = new(detail.SenderPrivateKey, chainID);
             Web3 web3 = new(account, network);
@@ -26,7 +26,7 @@ namespace Binance_Smart_Chain_Wallet.Modules
             if (detail.GasPrice != null) transactionInput.GasPrice = new HexBigInteger(Web3.Convert.ToWei((int)detail.GasPrice, UnitConversion.EthUnit.Gwei));
             if (detail.GasAmount != null) transactionInput.Gas = new HexBigInteger((ulong)detail.GasAmount);
 
-            return await web3.TransactionManager.SendTransactionAndWaitForReceiptAsync(transactionInput, cancellationTokenSource);
+            return await web3.TransactionManager.SendTransactionAndWaitForReceiptAsync(transactionInput, cancellationTokenSource.Token);
         }
 
         internal static async Task<TransactionReceipt> SendAndWaitForReceiptAsync(TokenTransactionDetail detail, BigInteger chainID, string network, CancellationTokenSource? cancellationTokenSource = default)

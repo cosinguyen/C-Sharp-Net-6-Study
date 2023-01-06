@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nethereum.HdWallet" Version="4.4.1" />
-    <PackageReference Include="Nethereum.Web3" Version="4.4.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Nethereum.HdWallet" Version="4.12.0" />
+    <PackageReference Include="Nethereum.Web3" Version="4.12.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -322,7 +322,7 @@ namespace Binance_Smart_Chain_Wallet
                 else if ((string)cbb.SelectedItem == "BSC TestNet")
                 {
                     //BSC TestNet
-                    _usdtContractAddress = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
+                    _usdtContractAddress = "0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684";
                     _network = "https://data-seed-prebsc-1-s1.binance.org:8545";
                     _chainID = 97;
                     _defaultGasPrice = 10;
