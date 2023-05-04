@@ -7,7 +7,7 @@ namespace Binance_Smart_Chain_Wallet.Modules
     {
         internal static Nethereum.HdWallet.Wallet CreateNewWallet()
         {
-            Nethereum.HdWallet.Wallet newWallet = new(Wordlist.English, WordCount.TwentyFour);
+            Nethereum.HdWallet.Wallet newWallet = new(Wordlist.English, WordCount.Twelve);
             return newWallet;
         }
 
